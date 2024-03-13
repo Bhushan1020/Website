@@ -1,0 +1,39 @@
+/* Main.css */
+
+.start-button {
+    animation: blink-animation 1s infinite;
+    background-color: #fd47479a; /* Green background */
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);    border: 2px solid #000000; /* Green border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    outline: none; /* Remove outline on focus */
+    transform-origin: 50% 50%; /* Set the transformation origin */
+  }
+  
+  .start-button:hover {
+    background-color: #6185fa; /* Darker green on hover */
+  }
+  
+  .start-button:active {
+    background-color: #fa9e61; /* Dark green on click */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Lighter shadow on click */
+  }
+  
+  @keyframes blink-animation {
+    0%, 100% {
+      transform: scale(1); /* Initial and final size */
+    }
+    50% {
+      transform: scale(1.1); /* Increased size */
+    }
+  }
+  

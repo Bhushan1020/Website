@@ -1,0 +1,23 @@
+
+.navbar-nav .nav-link {
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    margin-right: 20px;
+    font-weight: normal;
+    color: white; 
+  }
+  
+  .nav-title {
+    font-size: 1.5rem;
+    color: white;
+    margin-right: 20px;
+    font-weight: bold;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    font-weight: bold;
+    border-top-color: white;
+    border-bottom-color: white;
+    color: blue;
+  }
+  

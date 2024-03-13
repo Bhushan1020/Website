@@ -9,7 +9,6 @@ const userSchema = new mongoose.Schema({
     groupMembers : Number,
     events: [String],
     totalAmount : Number,
-    idPhoto: String,
 
 })
 

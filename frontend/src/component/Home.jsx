@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-import collegeLogo from './logo1.png';
+import collegeLogo from './logo.png';
 import { Link } from 'react-router-dom';
 import './Home.css'; // Import CSS for styling
 
@@ -11,8 +11,8 @@ const Home = () => {
         <Navbar.Brand href="/">
           <img
             src={collegeLogo}
-            width="60"
-            height="50"
+            width="70"
+            height="70"
             className="d-inline-block align-top"
             alt="College Logo"
           />

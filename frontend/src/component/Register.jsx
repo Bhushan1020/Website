@@ -8,7 +8,6 @@ function Register() {
     const [universityName, setUniversityName] = useState("");
     const [groupName, setGroupName] = useState("");
     const [events, setEvents] = useState([]);
-    const [idPhoto, setIdPhoto] = useState(null);
     const [totalAmount, setTotalAmount] = useState(0);
     const [contactNo, setContactNo] = useState("");
     const [groupMembers, setGroupMembers] = useState(1);
@@ -17,7 +16,7 @@ function Register() {
         RoboWar: 400,
         LineFollowerRobot: 200,
         DroneRacing: 600,
-        Esport: 700,
+        Esports: 700,
         RobotProgramming: 200,
         RoboExpo: 300,
         Contraption: 300,
@@ -34,33 +33,24 @@ function Register() {
         }
     };
 
-    const shortenURL = async (longURL) => {
-        try {
-            const response = await axios.post('https://tinyurl.com/api-create.php?url=' + encodeURIComponent(longURL));
-            return response.data;
-        } catch (error) {
-            console.error('Error shortening URL:', error);
-            return longURL;
-        }
-    };
+   
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (totalAmount > 0 && idPhoto) {
-            const shortIdPhoto = await shortenURL(idPhoto);
+        if (totalAmount > 0) {
+          
             const registrationData = {
                 name,
                 collegeName,
                 universityName,
                 groupName,
                 events,
-                idPhoto: shortIdPhoto,
                 totalAmount,
                 contactNo,
                 groupMembers
             };
 
-            axios.post("http://localhost:9000/register", registrationData)
+            axios.post("mongodb+srv://bhushannarawade2003:QrKmW2OfLjrK408O@cluster0.lsiz6m9.mongodb.net/AR", registrationData)
                 .then((res) => {
                     console.log(res);
                     console.log(res.data);
@@ -70,7 +60,6 @@ function Register() {
                     setUniversityName("");
                     setGroupName("");
                     setEvents([]);
-                    setIdPhoto(null);
                     setTotalAmount(0);
                     setContactNo("");
                     setGroupMembers(1);
@@ -81,14 +70,7 @@ function Register() {
         }
     };
 
-    const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            setIdPhoto(reader.result);
-        };
-        reader.readAsDataURL(file);
-    };
+
 
     const calculateTotalAmount = () => {
         let total = 0;
@@ -130,6 +112,7 @@ function Register() {
                     <td><label htmlFor="contactNo">Contact Number:</label></td>
                     <td><input type="text" maxLength={10} name="contactNo" id="contactNo" placeholder="Enter contact number" value={contactNo} onChange={(e) => setContactNo(e.target.value)} required style={{ marginLeft: '10px', padding: '5px' }} /></td>
                 </tr>
+             
                 <tr>
                     <td><label htmlFor="groupMembers">Group Members:</label></td>
                     <td>
@@ -185,10 +168,7 @@ function Register() {
                                 <button type="button"  onClick={handlePayNow}style={{ padding: '8px 20px', backgroundColor: '#534caf', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontSize: '16px', marginRight: '10px' }}>Pay Now</button>
                             </td>
                         </tr>
-                        <tr>
-                            <td><label htmlFor="idPhoto">ID Photo:</label></td>
-                            <td><input type="file" accept="image/*" name="idPhoto" id="idPhoto" onChange={handleFileChange}  style={{ marginLeft: '10px' }} />{idPhoto && <img src={idPhoto} alt="ID Photo" />}</td>
-                        </tr>
+                     
                         <tr>
                             <td></td>
                             <td><button type="submit" style={{ padding: '8px 20px', backgroundColor: '#4CAF50', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontSize: '16px' }}>Register</button>

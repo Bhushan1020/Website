@@ -11,7 +11,7 @@ function Admin() {
 
     const fetchRegistrations = async () => {
         try {
-            const response = await axios.get("http://localhost:9000/allusers");
+            const response = await axios.get("mongodb+srv://bhushannarawade2003:QrKmW2OfLjrK408O@cluster0.lsiz6m9.mongodb.net/AR");
             setRegistrations(response.data);
         } catch (error) {
             console.error('Error fetching registrations:', error);
